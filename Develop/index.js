@@ -19,21 +19,14 @@ const fs = require('fs');
 
 inquirer
     .prompt([
-        {
-            type: 'input',
-            name: 'title',
-            message: 'What is the title of your app?',
-        },
-        {
-            type: 'input',
-            name: '',
-            message: '?',
-        },
-        {
-            type: 'input',
-            name: '',
-            message: '?',
-        },
+        {type: 'input', name: 'title', message: 'What is the title of your app?',},
+        {type: 'input', name: 'description', message: '?',},
+        {type: 'input', name: 'tableOfContents', message: '?',},
+        {type: 'input', name: 'installation', message: '?',},
+        {type: 'input', name: 'usage', message: '?',},
+        {type: 'list', name: 'license', message: '?', choices: 'license1, license2, license 3' },
+        {type: 'input', name: 'contributions', message: '?',},
+        {type: 'input', name: 'userTests', message: '?',},
     ])
     .then((data) => {
         const readme = /* reademe contents here*/ `${data}`
