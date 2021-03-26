@@ -1,5 +1,14 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+const { table } = require('console');
+
+const init = function(){
+
+}
+
+
+
+
 
 inquirer
     .prompt([
@@ -12,6 +21,7 @@ inquirer
         {type: 'input', name: 'contributions', message: 'Who made the app the readme will be for?'},
     ])
     .then((data) => {
+        let tableEls = data.tableOfContents.split(' ');
         const readme =
 `
 # ${data.title}
@@ -20,7 +30,9 @@ inquirer
 ${data.description}
 
 ## Table of Contents
-${data.tableOfContents}
+- [${tableEls[0]}](#${tableEls[0]})
+- [${tableEls[1]}](#${tableEls[1]})
+- [${tableEls[2]}](#${tableEls[2]})
 
 ## Installation
 ${data.installation}
@@ -35,7 +47,7 @@ ${data.license}
 ${data.contributions}
 `;
 
-        fs.writeFile('ReadmeTest.md', readme, (err) =>
+        fs.writeFile(`${data.title}`, readme, (err) =>
            err ? console.error(err) : console.log('Success!'));
-        console.log(readme);
+        console.log(data.tableOfContents.split(' '));
     });
