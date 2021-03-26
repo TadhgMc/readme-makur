@@ -2,14 +2,6 @@ const inquirer = require('inquirer');
 const fs = require('fs');
 const { table } = require('console');
 
-const init = function(){
-
-}
-
-
-
-
-
 inquirer
     .prompt([
         {type: 'input', name: 'title', message: 'What is the title of your app?'},
@@ -47,7 +39,7 @@ ${data.license}
 ${data.contributions}
 `;
 
-        fs.writeFile(`${data.title}`, readme, (err) =>
+        fs.writeFile(`${data.title}.md`, readme, (err) =>
            err ? console.error(err) : console.log('Success!'));
         console.log(data.tableOfContents.split(' '));
     });
